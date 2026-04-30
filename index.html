@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>[Your Name] | Philosopher & Logician</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:wght@300;400&family=Inconsolata:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1a1814;
+      --paper: #f5f1eb;
+      --muted: #7a7065;
+      --accent: #8b2e12;
+      --rule: #c8bfb0;
+      --indent: 2rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1.5px solid var(--ink);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .header-text h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 2.6rem;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+    }
+
+    .header-text .role {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .header-text .affiliation {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+
+    .photo-placeholder {
+      width: 110px;
+      height: 140px;
+      border: 1.5px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      background: #ede9e1;
+      flex-shrink: 0;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    section h2 {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section p {
+      margin-bottom: 0.9rem;
+      font-size: 1rem;
+    }
+
+    section p:last-child { margin-bottom: 0; }
+
+    /* ── Research interests ── */
+    .interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    .tag {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      border: 1px solid var(--rule);
+      padding: 0.2rem 0.6rem;
+      color: var(--muted);
+    }
+
+    /* ── Papers ── */
+    .paper-list {
+      list-style: none;
+    }
+
+    .paper-list li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.97rem;
+    }
+
+    .paper-list li:last-child { border-bottom: none; }
+
+    .paper-title {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .paper-title a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .paper-title a:hover { border-color: var(--accent); }
+
+    .paper-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+      font-family: 'Inconsolata', monospace;
+    }
+
+    .paper-status {
+      font-size: 0.72rem;
+      font-family: 'Inconsolata', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-left: 0.5rem;
+    }
+
+    /* ── CV link ── */
+    .cv-link {
+      display: inline-block;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+      padding: 0.4rem 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .cv-link:hover {
+      background: var(--accent);
+      color: var(--paper);
+    }
+
+    /* ── Contact ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1.2rem;
+      font-size: 0.92rem;
+      align-items: baseline;
+    }
+
+    .contact-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-value a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.2s;
+    }
+
+    .contact-value a:hover { border-color: var(--ink); }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── Fade in ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header, section {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    section:nth-child(2) { animation-delay: 0.08s; }
+    section:nth-child(3) { animation-delay: 0.16s; }
+    section:nth-child(4) { animation-delay: 0.24s; }
+    section:nth-child(5) { animation-delay: 0.32s; }
+    section:nth-child(6) { animation-delay: 0.40s; }
+
+    @media (max-width: 520px) {
+      header { grid-template-columns: 1fr; }
+      .photo-placeholder { width: 90px; height: 115px; }
+      .header-text h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="header-text">
+      <h1>[Your Name]</h1>
+      <div class="role">Philosopher &amp; Logician</div>
+      <div class="affiliation">[Current Institution], [Department]</div>
+    </div>
+    <div class="photo-placeholder">photo<br/>here</div>
+  </header>
+
+  <section>
+    <h2>About</h2>
+    <p>
+      [A brief paragraph introducing yourself — who you are, where you work, and what you do. 
+      Two or three sentences is plenty. For example: "I am a philosopher and logician 
+      working at the intersection of mathematical logic and the philosophy of mathematics. 
+      My work concerns [topic], with particular attention to [aspect]."]
+    </p>
+    <p>
+      [Optionally, a second short paragraph on broader intellectual context or 
+      collaborative projects, if relevant.]
+    </p>
+  </section>
+
+  <section>
+    <h2>Research Interests</h2>
+    <p>[A short paragraph describing your research in slightly more detail than the About section — 
+    what questions drive your work, what methods you use, what debates you engage with.]</p>
+    <div class="interests">
+      <span class="tag">[Interest 1]</span>
+      <span class="tag">[Interest 2]</span>
+      <span class="tag">[Interest 3]</span>
+      <span class="tag">[Interest 4]</span>
+      <span class="tag">[Interest 5]</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publications &amp; Work in Progress</h2>
+    <ul class="paper-list">
+
+      <li>
+        <div class="paper-title">
+          <a href="[link to paper or preprint]">[Title of Published Paper]</a>
+        </div>
+        <div class="paper-meta">[Journal Name], vol. [X], [Year], pp. [X–Y]</div>
+      </li>
+
+      <li>
+        <div class="paper-title">
+          <a href="[link or #]">[Title of Another Paper]</a>
+        </div>
+        <div class="paper-meta">[Journal or Book], [Year]</div>
+      </li>
+
+      <li>
+        <div class="paper-title">
+          [Title of Work in Progress]
+          <span class="paper-status">in progress</span>
+        </div>
+        <div class="paper-meta">[Brief description, e.g. "draft available on request"]</div>
+      </li>
+
+    </ul>
+  </section>
+
+  <section>
+    <h2>CV</h2>
+    <p>My full curriculum vitae is available below.</p>
+    <a class="cv-link" href="[your-cv.pdf]">Download CV (PDF)</a>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <span class="contact-label">Email</span>
+      <span class="contact-value">
+        <a href="mailto:[your.email@institution.edu]">[your.email@institution.edu]</a>
+      </span>
+
+      <span class="contact-label">Office</span>
+      <span class="contact-value">[Room number, Building, Institution]</span>
+
+      <span class="contact-label">Address</span>
+      <span class="contact-value">
+        [Department of Philosophy]<br/>
+        [Institution Name]<br/>
+        [Street Address]<br/>
+        [City, Country]
+      </span>
+    </div>
+  </section>
+
+  <footer>
+    Last updated [Month Year]
+  </footer>
+
+</div>
+</body>
+</html>
